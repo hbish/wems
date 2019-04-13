@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+e.eventsId ,
+e.deviceId ,
+e.timestamp,
+e.alertId,
+a.alertsId,
+a.alertSettingId,
+ast.alertId,
+ast.alertType,
+ast.alertPriority,
+ast.minThresholdValue,
+ast.maxThresholdValue,
+ast.exactThresholdValue,
+ast.alertUserGroup,
+ug.userGroupId,
+ug.userGroupName,
+d.deviceuid,
+d.roomuid
+
+FROM
+events_log e, alert_log a, alert_setting ast, user_group ug, sensordata_device d
+
+WHERE
+ast.alertUserGroup = ug.userGroupId AND
+e.alertId = a.alertsId AND
+a.alertsId = ast.alertId AND
+e.deviceId = d.deviceuid]]>
+	</queryString>
+	<field name="eventsId" class="java.lang.Integer"/>
+	<field name="deviceId" class="java.lang.Integer"/>
+	<field name="timestamp" class="java.sql.Timestamp"/>
+	<field name="alertId" class="java.lang.Integer"/>
+	<field name="alertsId" class="java.lang.Integer"/>
+	<field name="alertSettingId" class="java.lang.Integer"/>
+	<field name="alertType" class="java.lang.String"/>
+	<field name="alertPriority" class="java.lang.String"/>
+	<field name="minThresholdValue" class="java.lang.Double"/>
+	<field name="maxThresholdValue" class="java.lang.Double"/>
+	<field name="exactThresholdValue" class="java.lang.Double"/>
+	<field name="alertUserGroup" class="java.lang.Integer"/>
+	<field name="userGroupId" class="java.lang.Integer"/>
+	<field name="userGroupName" class="java.lang.String"/>
+	<field name="deviceuid" class="java.lang.Integer"/>
+	<field name="roomuid" class="java.lang.Integer"/>
+	<sortField name="eventsId"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="69" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="269" height="69"/>
+				<imageExpression><![CDATA["reports/wems-logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="645" y="29" width="156" height="40"/>
+				<textElement>
+					<font size="30" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Event List ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="30" splitType="Stretch">
+			<textField pattern="EEE, d MMM yyyy HH:mm:ss Z">
+				<reportElement x="55" y="8" width="183" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="2" y="2" width="800" height="1"/>
+			</line>
+			<line>
+				<reportElement x="1" y="28" width="800" height="1"/>
+			</line>
+			<textField>
+				<reportElement x="676" y="8" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="23" y="8" width="32" height="19"/>
+				<textElement/>
+				<text><![CDATA[Time:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="645" y="8" width="32" height="19"/>
+				<textElement/>
+				<text><![CDATA[Page:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="57" splitType="Stretch">
+			<rectangle>
+				<reportElement x="530" y="0" width="115" height="57" backcolor="#CCCCCC"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Solid" lineColor="#CCCCCC"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="9" y="9" width="64" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Event ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="9" width="64" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Device ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="158" y="9" width="64" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Time]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="244" y="9" width="49" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Alert ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="298" y="9" width="79" height="33"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Alert Setting
+ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="382" y="9" width="64" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Alert Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="453" y="9" width="49" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Priority]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="535" y="28" width="24" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MIN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="535" y="28" width="24" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MIN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="566" y="28" width="32" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MAX]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="605" y="28" width="40" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Exact]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="558" y="6" width="68" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Threshold]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="666" y="9" width="67" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[User Group]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="742" y="9" width="49" height="33"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Room
+ID]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<rectangle>
+				<reportElement x="530" y="0" width="115" height="24" backcolor="#CCCCCC"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Solid" lineColor="#CCCCCC"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="2" y="1" width="800" height="1"/>
+			</line>
+			<textField>
+				<reportElement x="9" y="4" width="64" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{eventsId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="86" y="4" width="61" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{deviceId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="158" y="4" width="80" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{timestamp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="244" y="4" width="49" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{alertId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="298" y="4" width="79" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{alertSettingId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="382" y="4" width="64" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{alertType}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="453" y="4" width="73" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{alertPriority}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="571" y="4" width="24" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{maxThresholdValue}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="615" y="2" width="24" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{exactThresholdValue}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="676" y="4" width="56" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{userGroupName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="742" y="4" width="49" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{roomuid}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="537" y="4" width="24" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{minThresholdValue}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="21" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="338" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="418" y="0" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="23" splitType="Stretch"/>
+	</summary>
+</jasperReport>

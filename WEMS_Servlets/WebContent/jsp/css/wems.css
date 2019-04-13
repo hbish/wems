@@ -1,0 +1,195 @@
+@charset "utf-8";
+/* CSS Document */
+
+	
+
+div.logo {
+	color: #006600;
+
+	position: absolute;
+	z-index: 88;
+	top: 20px;
+	left: 0px;
+	width: 100%;
+	white-space: nowrap;
+	text-align: right;
+	}
+	div.logo .wems-logo {
+		display: inline-block;
+		border-top: 0;
+		padding: 0 1em;
+		color: #006600;
+
+		margin-left: 0.5em;
+		/*height: 2.6em;*/
+		/*line-height: 2.3em;*/
+		vertical-align: top;
+		font-size: 0.833em;
+        font-family: Verdana, Geneva, sans-serif;
+		}
+		.ie7 div.logo .wems-logo {
+			display: inline;
+			zoom: 1;
+		}
+		div.logo .wems-logo p {
+			margin-top: 3px;
+		}
+
+
+.table-no-border {
+	background-color: #FFF;
+	border: none;
+}
+.table-no-border tbody tr td {
+	background-color: #FFF;
+	padding: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* overview-block */
+
+.overview-block > li {
+	background: #e6e6e6 url(../images/old-browsers-bg/lite-grey-grad-bg.png) repeat-x top;
+	-webkit-background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+	-o-background-size: 100% 100%;
+	background-size: 100% 100%;
+	background: -moz-linear-gradient(
+		top,
+		#f7f7f7,
+		#e6e6e6
+	);
+	background: -webkit-gradient(
+		linear,
+		left top, left bottom,
+		from(#f7f7f7),
+		to(#e6e6e6)
+	);
+	border: 1px solid white;
+	-moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+	position: relative;
+	z-index: 89;
+	-moz-border-radius: 0.25em;
+	-webkit-border-radius: 0.25em;
+	-webkit-background-clip: padding-box;
+	border-radius: 0.25em;
+	color: #666666;
+	line-height: 1.25em;
+	}
+
+	.ie .overview-block > li {
+		border-color: #cccccc;
+	}
+
+	.overview-block > li {
+		padding: 1em 0.5em;
+		margin-bottom: 0.5em;
+	}
+
+		.overview-block > li a {
+			color: #666666;
+		}
+		.overview-block > li img {
+			margin-bottom: -4px;
+		}
+		.overview-block > li .digit.float-right {
+			margin-top: -0.417em;
+			margin-bottom: -0.333em;
+			}
+			
+			/* IE class */
+			.ie7 .overview-block > li .digit.float-right {
+				margin-top: -0.25em;
+			}
+			
+			
+/* http://perishablepress.com/press/2008/02/05/lessons-learned-concerning-the-clearfix-css-hack */
+
+.overview-block > li:after {
+	clear: both;
+	content: ' ';
+	display: block;
+	font-size: 0;
+	line-height: 0;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+
+.overview-block > li {
+	display: inline-block;
+}
+
+
+* html .overview-block > li {
+	height: 1%;
+}
+
+.overview-block > li {
+	display: block;
+}
+
+
+/* overview-value */
+ul.overview-value {
+	line-height: 2em; /**/
+	margin-right: 0.5em;
+	}
+	ul.overview-value li.digit {
+		background: #808080;
+		font-size: 1em; /*font-size: 0.833em;*/
+		-moz-border-radius: 0.4em;
+		-webkit-border-radius: 0.4em;
+		-webkit-background-clip: padding-box;
+		border-radius: 0.4em;
+		color: white;
+		text-transform: uppercase;
+		white-space: nowrap;
+		line-height: 1.3em;
+		background-repeat: no-repeat;
+		background-position: 0.2em center;
+		padding: 0.4em 0.5em;
+		}
+		ul.overview-value li {
+			display: inline-block;
+		}
+		/* IE class */
+		.ie7 ul.overview-value li {
+			float: left;
+			margin-right: 0.25em;
+		}
+		/* IE class */
+		.ie7 ul.overview-value li.last-child {
+			margin-right: 0;
+		}
+
+		ul.overview-value li.title {
+   	       font-size: 1em; 
+	       color: black;
+	       white-space: nowrap;
+           line-height: 1.3em;
+	       padding: 0.4em 0.5em;
+		}
+		
+		
